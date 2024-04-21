@@ -2,7 +2,7 @@
 import React from 'react';
 import Schedule from '../../src/components/schedule/Schedule';
 
-const App: React.FC = () => {
+const SchedulePage: React.FC = () => {
   return <Schedule />;
 };
-export default App;
+export default SchedulePage;

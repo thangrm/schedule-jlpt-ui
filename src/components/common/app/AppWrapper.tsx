@@ -5,10 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AppMenu } from './AppMenu';
 import t from '@/dictionaries/en.json';
+import { usePathname } from 'next/navigation';
 
 const { Header, Content, Footer } = Layout;
 
 export const AppWrapper = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
+  if (pathname.includes('auth')) {
+    return <>{children}</>;
+  }
+
   return (
     <Layout>
       <Header

@@ -5,5 +5,9 @@
   "footer": {
     "company": "T&T Company",
     "created": "Created by the love of the Moon"
-  }
+  },
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "rememberMe": "Remember me"
 }
