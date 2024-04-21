@@ -1,25 +1,12 @@
-import Image from 'next/image';
-import {
-  Button,
-  Checkbox,
-  Flex,
-  Form,
-  FormProps,
-  InputNumber,
-  Modal,
-  Switch,
-  TimePicker,
-} from 'antd';
-import TextArea from 'antd/es/input/TextArea';
+import { Form, FormProps, InputNumber, Modal, Switch, TimePicker } from 'antd';
 import React from 'react';
-import { SignatureOutlined } from '@ant-design/icons';
 
 type ModalCompleteProps = {
   date: any;
   form: any;
   open: any;
   handleOk: any;
-  confirmLoading: any;
+  isLoading: boolean;
   handleCancel: any;
 };
 
@@ -33,7 +20,7 @@ export default function ModalSchedule({
   form,
   open,
   handleOk,
-  confirmLoading,
+  isLoading,
   handleCancel,
 }: ModalCompleteProps) {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
@@ -50,12 +37,11 @@ export default function ModalSchedule({
       title={`Schedule: ${date?.format('DD/MM/YYYY')}`}
       open={open}
       onOk={handleOk}
-      confirmLoading={confirmLoading}
+      confirmLoading={isLoading}
       onCancel={handleCancel}
       okText="Submit"
     >
       <Form
-        name="basic"
         form={form}
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 18 }}
