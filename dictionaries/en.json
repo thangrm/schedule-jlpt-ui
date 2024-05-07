@@ -7,7 +7,9 @@
     "created": "Created by the love of the Moon"
   },
   "login": "Login",
+  "signOut": "Sign out",
   "email": "Email",
   "password": "Password",
-  "rememberMe": "Remember me"
+  "rememberMe": "Remember me",
+  "loading": "Loading"
 }

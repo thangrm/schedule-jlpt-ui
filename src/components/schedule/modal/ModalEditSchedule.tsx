@@ -1,4 +1,5 @@
 import {
+  Button,
   DatePicker,
   Form,
   FormProps,
@@ -30,7 +31,7 @@ interface FieldType {
   reading?: boolean;
 }
 
-export default function ModalSchedule({
+export default function ModalEditSchedule({
   date,
   form,
   open,
@@ -51,12 +52,36 @@ export default function ModalSchedule({
         Accept: 'application/json',
       },
       body: JSON.stringify({
+        is_update: true,
         date: formValues?.date?.format('YYYY-MM-DD'),
         time_start: formValues?.time?.format('HH:mm'),
         number_word: formValues?.vocabulary,
         is_study_grammar: formValues?.grammar,
         is_study_listening: formValues?.listening,
         is_study_reading: formValues?.reading,
+      }),
+    })
+      .then((res) => {
+        setIsLoading(false);
+        res.ok && callBackOnSuccess();
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+      });
+  };
+
+  const handleDeleteSchedule = () => {
+    setIsLoading(true);
+    fetch(API_ENDPOINT + 'schedules', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        date: date?.format('YYYY-MM-DD'),
       }),
     })
       .then((res) => {
@@ -76,7 +101,28 @@ export default function ModalSchedule({
       onOk={handleOk}
       confirmLoading={isLoading}
       onCancel={handleCancel}
-      okText="Submit"
+      footer={[
+        <Button key="back" onClick={handleCancel}>
+          Cancel
+        </Button>,
+        <Button
+          key="delete"
+          type="primary"
+          loading={isLoading}
+          danger
+          onClick={handleDeleteSchedule}
+        >
+          Delete
+        </Button>,
+        <Button
+          key="submit"
+          type="primary"
+          loading={isLoading}
+          onClick={handleOk}
+        >
+          Save
+        </Button>,
+      ]}
     >
       <Form
         form={form}

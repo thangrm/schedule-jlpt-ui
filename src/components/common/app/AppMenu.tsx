@@ -18,6 +18,10 @@ const items = [
     key: '/love-ivy',
     label: t.ivy,
   },
+  {
+    key: '/auth/logout',
+    label: t.signOut,
+  },
 ];
 
 export const AppMenu = () => {
