@@ -10,4 +10,4 @@ export const NOTE_TYPE = {
   GRAMMAR: 'grammar',
 };
 
-export const API_ENDPOINT = 'http://localhost:8000/api/';
+export const API_ENDPOINT = 'http://api.tkunloveivy.com/api/';
